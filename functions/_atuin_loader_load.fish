@@ -10,7 +10,7 @@ function _atuin_loader_load \
     # Check if atuin is available
     if command -v atuin >/dev/null 2>&1
         # Load atuin with any custom arguments
-        if set -q _atuin_loader_arguments[1]
+        if set -q _atuin_loader_arguments; and test (count $_atuin_loader_arguments) -gt 0
             atuin init fish $_atuin_loader_arguments | source
         else
             atuin init fish | source
