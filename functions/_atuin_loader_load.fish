@@ -1,21 +1,27 @@
 function _atuin_loader_load \
     --description "Loads the Atuin fish plugin"
 
+    # Parse arguments
     set enable_logging $argv[1]
     if not set --query argv[1]
-        set --function enable_logging true
+        set enable_logging true
     end
 
-    if status is-interactive; and which atuin >/dev/null
-        atuin init fish $_atuin_loader_arguments | source
-
-        if "$enable_logging" != false
+    # Check if atuin is available
+    if command -v atuin >/dev/null 2>&1
+        # Load atuin with any custom arguments
+        if set -q _atuin_loader_arguments[1]
+            atuin init fish $_atuin_loader_arguments | source
+        else
+            atuin init fish | source
+        end
+        
+        if test "$enable_logging" != false
             echo "Loaded the Atuin fish plugin."
         end
     else
-        if "$enable_logging" != false
-            echo "Skipped loading the Atuin fish plugin."
+        if test "$enable_logging" != false
+            echo "Skipped loading Atuin: atuin command not found."
         end
     end
-
 end

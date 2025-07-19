@@ -1,16 +1,22 @@
-# `fish-plugin-atuin-loader` [![GPL-3 License](https://img.shields.io/badge/license-GPL3-007EC7.svg?style=flat-square)](/LICENSE)
+# fish-plugin-atuin-loader
 
-> A [Fish shell](https://fishshell.com/) plugin to load [Atuin](https://github.com/atuinsh/atuin) on interactive shell start.
+Auto-loads [Atuin](https://github.com/atuinsh/atuin) when you start a new Fish shell.
 
 ## Installation
 
 ```fish
-$ fisher install dudeofawesome/fish-plugin-atuin-loader
+fisher install dudeofawesome/fish-plugin-atuin-loader
 ```
 
 ## Usage
 
-1. Start a new shell and witness Atuin load.
+Just start a new shell - Atuin loads automatically.
+
+To pass custom arguments to atuin:
+
+```fish
+set -U _atuin_loader_arguments --disable-up-arrow
+```
 
 ## Development
 
