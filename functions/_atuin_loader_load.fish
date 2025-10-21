@@ -11,9 +11,9 @@ function _atuin_loader_load \
     if command -v atuin >/dev/null 2>&1
         # Load atuin with any custom arguments
         if set -q _atuin_loader_arguments; and test (count $_atuin_loader_arguments) -gt 0
-            atuin init fish $_atuin_loader_arguments | sed 's/-k up/up/' | source
+            atuin init fish $_atuin_loader_arguments | source
         else
-            atuin init fish | sed 's/-k up/up/' | source
+            atuin init fish | source
         end
         
         if test "$enable_logging" != false
